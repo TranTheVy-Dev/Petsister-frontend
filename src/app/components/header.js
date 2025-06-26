@@ -23,7 +23,6 @@ const Header = () => {
     0
   );
 useEffect(()=>{
-
   const loadcustomer = () =>{
     const customerData = localStorage.getItem("customer");
     if (customerData) {
@@ -44,7 +43,7 @@ useEffect(()=>{
       logout();
       router.push("/dang-nhap")
     } catch (error) {
-      console.log("can not logot:", error);
+      console.log("can not logout:", error);
     }
   };
   return (

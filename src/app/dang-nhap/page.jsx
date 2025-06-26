@@ -61,7 +61,7 @@ export default function Login() {
         text: `Chào Mừng ${name_customer} đã trở lại`,
         timer: 5000,
         didClose : () =>{
-          router.push(redirectURL);
+          window.location.href = redirectURL
         }
       });
       setLoading(true);
