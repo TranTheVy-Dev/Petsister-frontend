@@ -23,17 +23,23 @@ const Header = () => {
     0
   );
 useEffect(()=>{
- try {
+
+  const loadcustomer = () =>{
     const customerData = localStorage.getItem("customer");
     if (customerData) {
       setCustomer(JSON.parse(customerData))
+    }else {
+      setCustomer(null);
     }
-  } catch (error) {
-    console.error("Error parsing customer data from localStorage:", error);
+  };
+  loadcustomer();
+  window.addEventListener("storage",loadcustomer)
+
+  return ()=>{
+    window.removeEventListener("storage",loadcustomer)
   }
 },[])
   const hanldelogout = () => {
-  
     try {
       logout();
       router.push("/dang-nhap")
