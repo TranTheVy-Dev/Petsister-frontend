@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { addService } from "@/app/lib/api_service"; // API thêm dịch vụ
+import { addService } from "@/app/lib/api_service";
 import { getAllCategories } from "@/app/lib/api_category"; // API lấy danh mục
 import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";

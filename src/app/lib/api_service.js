@@ -25,7 +25,6 @@ const useFetchService = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        
         const data = await response.json();
         setServices(data.data);
       } catch (err) {
@@ -38,8 +37,14 @@ const useFetchService = () => {
     fetchService();
   }, []); // Chạy khi component mount
 
-// api_service.js
- const addService = async (newService) => {
+
+  return { services, loading, error };
+};
+
+export default useFetchService;
+
+//Tran The Vy - Dev
+export const addService = async (newService) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   if (!API_URL) {
     throw new Error("API_URL is not defined");
@@ -66,13 +71,6 @@ const useFetchService = () => {
     throw new Error(err.message || "Có lỗi xảy ra khi thêm dịch vụ");
   }
 };
-
-  return { services, loading, error, addService };
-};
-
-export default useFetchService;
-
-
 //Zapxje
 export const getAllServices = async () => {
   try {

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { logout } from "../lib/logout";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   const router = useRouter()
   const pathname = usePathname();
+  const [customer , setCustomer] = useState(null)
+
   const isActive = (path) =>
     pathname === path || pathname.startsWith(`${path}/`) ? "active" : "";
   const cartItems = useSelector((state) =>
@@ -20,15 +22,16 @@ const Header = () => {
     (count, item) => count + Number(item.quantity),
     0
   );
-  let customer = null;
-  try {
+useEffect(()=>{
+ try {
     const customerData = localStorage.getItem("customer");
     if (customerData) {
-      customer = JSON.parse(customerData);
+      setCustomer(JSON.parse(customerData))
     }
   } catch (error) {
     console.error("Error parsing customer data from localStorage:", error);
   }
+},[])
   const hanldelogout = () => {
   
     try {

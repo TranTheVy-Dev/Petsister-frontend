@@ -1,26 +1,34 @@
+"use client";
 import Link from "next/link";
-import Image from "next/image";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-const fetchBlog = async () => {
-  const response = await fetch(`${API_URL}/api/web/post`, {
-    cache: "no-cache",
-  });
-  if (!response.ok) {
-    throw new Error("can not get data of post");
-  }
-  const post = await response.json();
-  return post.data;
-};
-const Blog = async () => {
-  let dataPost = [];
-  try {
-    dataPost = await fetchBlog();
-  } catch (error) {
-    console.error("loi roi kia cha noi", error);
-  }
+// const fetchBlog = async () => {
+//   const response = await fetch(`${API_URL}/api/web/post`, {
+//     cache: "no-cache",
+//   });
+//   if (!response.ok) {
+//     throw new Error("can not get data of post");
+//   }
+//   const post = await response.json();
+//   return post.data;
+// };
+const Blog = () => {
+  const [dataPost, setDataPost] = useState([]);
+  useEffect(() => {
+    const FecthBlog = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/web/post`);
+        setDataPost(response.data.data||[]);;
+      } catch (error) {
+        console.error("loi roi kia cha noi", error);
+      }
+    };
+    FecthBlog();
+  }, []);
   const truncateContent = (content, maxLength = 100) => {
     // Nếu nội dung có thể dài, chúng ta sẽ cắt bớt văn bản, đảm bảo HTML không bị ảnh hưởng
     const textContent = content.replace(/<[^>]*>/g, ""); // Loại bỏ các thẻ HTML
@@ -207,8 +215,8 @@ const Blog = async () => {
                     <div className="sidebar-tag-list">
                       <ul className="list-wrap">
                         {dataPost.map((post) => (
-                          <li>
-                            <Link href="#" key={post.id}>
+                          <li key={post.id}>
+                            <Link href="#">
                               {post.tags}
                             </Link>
                           </li>
