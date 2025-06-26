@@ -10,15 +10,15 @@ const Appointment = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [errors, setErrors] = useState({});
-  const customer = JSON.parse(localStorage.getItem("customer") || "{}");
+  const [customer , setCustomer] = useState(null)
   const router = useRouter();
   const [services, setServices] = useState([]);
 
   const [appointmentData, setAppointmentData] = useState({
-    customer_id: customer?.id || "",
+    customer_id: "",
     service_id: "",
-    pet_name: customer.pet_name || "",
-    pet_type: customer.pet_type || "",
+    pet_name:  "",
+    pet_type: "",
     pet_gender: "",
     pet_weight: "",
     pet_age: "",
@@ -43,7 +43,19 @@ const Appointment = () => {
         setLoading(false);
       }
     };
+    const customerStr = localStorage.getItem("customer")
+    if ( customerStr) {
+      const customerData = JSON.parse(customerStr)
+      setCustomer(customerData)
+      setAppointmentData((prev) => ({
+        ...prev,
+        customer_id: customerData.id || "",
+        pet_name: customerData.pet_name || "",
+        pet_type: customerData.pet_type || "",
+      }));
+    }
     fetchServices();
+
   }, []);
 
   const handleInputChange = (e) => {
@@ -106,18 +118,15 @@ const Appointment = () => {
           icon: "error",
         });
       } else if (response.data.status === 200) {
-        Swal.fire({
-          title: "Đặt lịch thành công",
-          icon: "success",
-          html:"Vui Lòng kiểm tra Email để xác nhận thông tin nhé<br><br>Lưu ý: Nếu không tìm thấy Thông tin được gởi qua Hộp thư chính vui lòng kiểm tra trong thư rác nhé"
-        });
         let dataAppointment = response.data.data.data.appointment;
         const appointmentData = dataAppointment;
         appointmentData.total_price = response.data.data.data.total_price;
         appointmentData.service_name = response.data.data.data.service_name;
         localStorage.setItem("appointment", JSON.stringify(appointmentData));
-        router.push("/dat-lich-thanh-cong");
-        Swal.close();
+        setTimeout(() => {
+          router.push("/dat-lich-thanh-cong");
+          Swal.close();
+        }, 300); // đợi 300ms cho chắc
       }
     } catch (error) {
       console.log("Due Bro");

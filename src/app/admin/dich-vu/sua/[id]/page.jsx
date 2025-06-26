@@ -20,9 +20,6 @@ async function datareview(id) {
     cache: "no-cache",
   })
   const reviews = await response.data.data;
-  console.log('====================================');
-  console.log(reviews);
-  console.log('====================================');
   return reviews;
 }
 export default function ServiceDetail({ params }) {
@@ -35,7 +32,7 @@ export default function ServiceDetail({ params }) {
   const [rating, setRating] = useState(0);
   const [review, setComment] = useState("");
   const router = useRouter();
-
+ const [customer , setCustomer] = useState(null);
 
   // New state to store the list of reviews
 
@@ -54,7 +51,11 @@ export default function ServiceDetail({ params }) {
       setReview(getreview);
       setLoading(false);
     };
-
+    const customerStr = localStorage.getItem("customer")
+    if (customerStr) {
+      const customerData = JSON.parse(customerStr)
+      setCustomer(customerData)
+    }
     fetchParamsAndService();
   }, [params]); // Dependency array: rerun when `params` changes
 
@@ -62,7 +63,6 @@ export default function ServiceDetail({ params }) {
     e.preventDefault();
     setRating(0);
     setComment("");
-    const customer = localStorage.getItem("customer")
     if (!customer) {
       Swal.fire({
           title: 'có gì đó sai sai',

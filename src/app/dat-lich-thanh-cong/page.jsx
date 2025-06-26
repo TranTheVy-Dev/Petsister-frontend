@@ -7,11 +7,33 @@ import "./style.css";
 const SuccessAppointment = () => {
   const [appointment, setAppointment] = useState(null);
   const router = useRouter();
-  const customer = JSON.parse(localStorage.getItem("customer"));
-  const appointmentData = JSON.parse(localStorage.getItem("appointment"));
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [customer, setCustomer] = useState(null);
   useEffect(() => {
-    if (appointmentData) {
-      setAppointment(appointmentData);
+    try {
+      const customerStr = localStorage.getItem("customer");
+      if (customerStr) {
+        const customerData = JSON.parse(customerStr);
+        setCustomer(customerData);
+      }
+      const appointmentStr = localStorage.getItem("appointment");
+      if (appointmentStr) {
+        const appointmentData = JSON.parse(appointmentStr);
+        setAppointment(appointmentData);
+      }
+    } catch (error) {
+      console.error("Lỗi khi parse customer:", error);
+    } finally {
+      setIsLoaded(true);
+    }
+    // Xóa dữ liệu khi rời khỏi trang
+    return () => {
+      localStorage.removeItem("appointment");
+    };
+  }, []);
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (appointment) {
       Swal.fire({
         icon: "success",
         title: "Đặt lịch thành công",
@@ -26,13 +48,10 @@ const SuccessAppointment = () => {
         router.push("/dat-lich");
       });
     }
-
-    // Xóa dữ liệu khi rời khỏi trang
-    return () => {
-      localStorage.removeItem("appointment");
-    };
-  }, [router]);
-
+  }, [appointment, isLoaded]);
+  if (!isLoaded) {
+    return null;
+  }
   if (!appointment) {
     return null;
   }

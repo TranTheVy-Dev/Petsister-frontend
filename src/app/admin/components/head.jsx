@@ -46,7 +46,5 @@ export default function NavHead() {
       </div>
     </div>
   </nav>
-  
-
 );
 }
