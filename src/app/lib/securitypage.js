@@ -1,30 +1,38 @@
 "use client";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+
 const useAuth = () => {
-  const token = localStorage.getItem('token')
-  try {
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // null = chưa kiểm tra
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const token = localStorage.getItem("token");
+
     if (!token) {
-      localStorage.setItem('redirectURL', window.location.href)
+      localStorage.setItem("redirectURL", window.location.href);
       Swal.fire({
-        title: 'Cảnh báo',
-        text: 'Bạn Phải đăng nhập mới sử dụng được dịch vụ này ',
-        icon: 'warning',
-        confirmButtonColor: 'YES',
+        title: "Cảnh báo",
+        text: "Bạn phải đăng nhập mới sử dụng được dịch vụ này.",
+        icon: "warning",
+        confirmButtonText: "Đồng ý",
         allowOutsideClick: false,
         allowEscapeKey: false,
-        showCancelButton: false,
-        focusConfirm: true,
-        focusCancel: false
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = '/dang-nhap'
-        }  
-      }); return false //chưa đăng nhập
-    } else 
-    return true; //đã đăng nhập
-  } catch (error) {
-    console.log('lỗi rồi cha ơi', error);
+          router.push("/dang-nhap");
+        }
+      });
+      setIsAuthenticated(false);
+    } else {
+      setIsAuthenticated(true);
+    }
+  }, [router]);
 
-  }
-}
+  return isAuthenticated;
+};
+
 export default useAuth;

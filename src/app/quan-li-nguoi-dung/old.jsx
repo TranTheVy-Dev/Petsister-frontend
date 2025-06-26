@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const ProfileForm = () => {
-  const customer = JSON.parse(localStorage.getItem("customer"));
+const [customer , setCustomer] = useState(null)
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -17,30 +17,23 @@ const ProfileForm = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-    if (!customer) {
+    const customerStr = localStorage.getItem("customer");
+    if (customerStr) {
+      const customerData = JSON.parse(customerStr);
+      setCustomer(customerData);
+  
+      setFormData({
+        full_name: customerData.full_name || "",
+        email: customerData.email || "",
+        phone_number: customerData.phone_number || "",
+        address: customerData.address || "",
+      });
+    } else {
       localStorage.setItem("redirectURL", "/quan-li-nguoi-dung");
       router.push("/dang-nhap");
-      return;
     }
-
-    // Kiểm tra xem formData đã được khởi tạo chưa
-    setFormData((prev) => {
-      if (
-        !prev.full_name &&
-        !prev.email &&
-        !prev.phone_number &&
-        !prev.address
-      ) {
-        return {
-          full_name: customer.full_name || "",
-          email: customer.email || "",
-          phone_number: customer.phone_number || "",
-          address: customer.address || "",
-        };
-      }
-      return prev;
-    });
-  }, [customer, router]);
+  }, [router]);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

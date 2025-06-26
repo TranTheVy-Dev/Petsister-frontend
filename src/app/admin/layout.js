@@ -36,7 +36,6 @@ ChartJS.register(
   Legend
 );
 
-const customer = JSON.parse(localStorage.getItem("customer"));
 
 export default function AdminLayout({ children }) {
   checkIsAdmin();

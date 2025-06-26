@@ -1,32 +1,32 @@
 "use client";
 
-import { useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-const errorPage = () => {
-  const error = localStorage.getItem("error");
+const ErrorPage = () => {
+  const [error, setError] = useState(null); // ✅ Tạo state cho error
   const router = useRouter();
 
   useEffect(() => {
-    if (error) {
+    const storedError = localStorage.getItem("error");
+    if (storedError) {
+      setError(storedError); // ✅ Cập nhật state để hiển thị trong JSX
       Swal.fire({
         icon: "error",
         title: "Lỗi 404",
-        text: error,
+        text: storedError,
       });
     }
 
-    // Xóa localStorage error khi rời khỏi trang
     return () => {
       localStorage.removeItem("error");
     };
-  }, [error]);
+  }, []);
 
   const handleBackToHome = () => {
-    localStorage.removeItem("error"); // Xóa error khi người dùng chuyển hướng
-    router.push("/"); // Chuyển đến trang chủ
+    localStorage.removeItem("error");
+    router.push("/");
   };
 
   return (
@@ -47,4 +47,4 @@ const errorPage = () => {
   );
 };
 
-export default errorPage;
+export default ErrorPage;

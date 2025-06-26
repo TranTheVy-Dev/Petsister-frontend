@@ -1,39 +1,29 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-// Hàm kiểm tra admin dựa trên dữ liệu localStorage
-export const isAdmin = () => {
-  const customer = JSON.parse(localStorage.getItem("customer"));
-  if (!customer) {
-    console.log("Chưa đăng nhập");
-    return false;
-  } else {
-    if (customer.role === 0) {
-      return false;
-    } 
-  }
-  return true;
-};
-
-// Hàm kiểm tra trạng thái đăng nhập  
-export const isLogin = () => {
-  const customer = JSON.parse(localStorage.getItem("customer"));
-  return !!customer;
-};
-
-// Custom hook: Xử lý điều hướng nếu người dùng không phải admin
+// ✅ Tạo hàm helper bên trong hook cho an toàn
 export const checkIsAdmin = () => {
+  const router = useRouter();
+
   useEffect(() => {
-    // Kiểm tra trạng thái đăng nhập
-    if (!isLogin()) {
+    // Tránh lỗi nếu đang SSR
+    if (typeof window === "undefined") return;
+
+    const customerStr = localStorage.getItem("customer");
+    if (!customerStr) {
       localStorage.setItem("redirectURL", "/admin");
-      window.location.href = "/dang-nhap";
+      router.push("/dang-nhap");
       return;
     }
-    // Kiểm tra quyền admin
-    if (!isAdmin()) {
-      window.location.href = "/not-authorized";
-      return null;
+
+    const customer = JSON.parse(customerStr);
+    if (!customer || customer.role === 0) {
+      router.push("/not-authorized");
+      return;
     }
-  });
+
+    // Nếu là admin thì không làm gì
+  }, [router]);
 };
