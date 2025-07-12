@@ -98,11 +98,11 @@ export default function BlogDetail({ params }) {
         `${API_URL}/api/web/comment`,
         commentdata
       );
-      if (response) {
+      if (response) {``
         Swal.fire({
           title: "Success",
           icon: "success",
-          text: "Cảm ơi về Bình Luận của bạn",
+          text: "Cảm ơn về Bình Luận của bạn",
           didClose: () => {
             router.replace(`/chi-tiet-tin-tuc/${commentdata.blog_id}`);
           },
