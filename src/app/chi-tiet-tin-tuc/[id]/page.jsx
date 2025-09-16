@@ -27,7 +27,6 @@ async function getComment(id) {
 }
 export default function BlogDetail({ params }) {
   const [comment, setComment] = useState("");
-
   const [datapost, setpost] = useState(null);
   const [postDetail, setPostdetail] = useState(null);
   const [datacomment, setDatacomment] = useState(null);
