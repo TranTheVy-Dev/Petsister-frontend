@@ -159,7 +159,7 @@ export default function CheckoutPage() {
               onChange={(e) => setPaymentMethod(e.target.value)}
             >
               <option value="cash">Tiền mặt</option>
-              <option value="momo">Momo</option>
+              {/* <option value="momo">Momo</option> */}
             </select>
           </div>
 

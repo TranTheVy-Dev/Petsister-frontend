@@ -14,8 +14,8 @@ export default function Footer() {
                                         </div>
                                         <div className="footer__content">
                                             <p>Thành phố Hồ Chí Minh</p>
-                                            <Link href={"tel:0123456789"}>+00 123 45678 44</Link>
-                                            <Link href={"mailto:Supportinfo@gmail.com"}>petsisters.80833@gmail.com</Link>
+                                            <Link href={"tel:0123456789"}>0327255930</Link>
+                                            <Link href={"mailto:Supportinfo@gmail.com"}>vydev050204@gmail.com</Link>
                                         </div>
                                         <div className="footer__social">
                                             <h6 className="title">Theo dõi chúng tôi trên:</h6>
@@ -31,13 +31,13 @@ export default function Footer() {
                                 </div>
                                 <div className="col-xl-2 col-lg-4 col-md-6 col-sm-6">
                                     <div className="footer__widget">
-                                        <h4 className="footer__widget-title">Liên kết nhanh</h4>
+                                        <h4 className="footer__widget-title">Cách Chương trình khác</h4>
                                         <div className="footer__link">
                                             <ul className="list-wrap">
-                                                <li><Link href="animal.html">Cứu hộ động vật</Link></li>
-                                                <li><Link href="contact.html">Giáo dục nhân văn</Link></li>
-                                                <li><Link href="animal-details.html">Bệnh viện động vật</Link></li>
-                                                <li><Link href="animal.html">Nuôi động vật đường phố</Link></li>
+                                                <li>Cứu hộ động vật</li>
+                                                <li>Giáo dục nhân văn</li>
+                                                <li>Bệnh viện động vật</li>
+                                                <li>Nuôi động vật đường phố</li>
                                                 {/* <li><Link href={"/"}>Homepage 01</Link></li>
                                                 <li><Link href="pricing.html">Pricing Table</Link></li> */}
                                             </ul>
@@ -62,13 +62,12 @@ export default function Footer() {
                                 <div className="col-xl-4 col-lg-4 col-md-6">
                                     <div className="footer__widget">
                                         <div className="footer__newsletter">
-                                            <h2 className="title">Đăng ký nhận bản tin của chúng tôi</h2>
+                                            <h2 className="title">Để lại lời nhắn nếu có vấn đề gì với thú cưng của bạn</h2>
                                             <div className="shape">
                                                 <img src="/img/images/footer_newsletter_shape.svg" alt="" className="injectable"/>
                                             </div>
                                             <form action="#">
-                                                <input id="email" type="email" placeholder="Nhập E-mail của bạn"/>
-                                                <button className="btn" type="submit">Đăng ký ngay</button>
+                                                <button className="btn"><a href="/lien-he">Liên Hệ</a></button>
                                             </form>
                                         </div>
                                     </div>

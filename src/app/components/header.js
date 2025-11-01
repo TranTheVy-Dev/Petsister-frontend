@@ -72,7 +72,7 @@ useEffect(()=>{
                   <li>
                     <i className="flaticon-mail"></i>
                     <Link href="mailto:Petspostinfo@gmail.com">
-                      petsisters.80833@gmail.com
+                      vydev050204@gmail.com
                     </Link>
                   </li>
                   <li>
@@ -382,7 +382,7 @@ useEffect(()=>{
                         <div className="contact-list mb-30">
                             <h4>Địa chỉ Email</h4>
                             <p>
-                            petsisters.80833@gmail.com</p>
+                            vydev050204@gmail.com</p>
                             
                         </div>
                     </div>

@@ -96,7 +96,7 @@ export default function Home() {
                                             <div className="customer__review-img">
                                                 <ul className="list-wrap">
                                                 <li><img src="img/images/author_01.png" alt="" width="150" height="60" /></li>
-                                                <li><img src="img/images/author_02.png" alt="" width="150" height="50" /></li>
+                                                <li><img src="img/images/author_02.png" alt="" width="150" height="60" /></li>
 
                                                     {/* <li><img src="img/images/author_03.png" alt=""/></li>
                                                     <li><img src="img/images/author_04.png" alt=""/></li> */}
@@ -457,7 +457,7 @@ export default function Home() {
                                                     <p>“ Chúng tôi hiểu rằng người bạn lông xù của bạn, thành viên quý giá trong thú cưng của bạn là.”</p>
                                                     <div className="testimonial__author">
                                                         <div className="testimonial__author-thumb">
-                                                            <img src="img/images/testi_author01.png" alt="" />
+                                                       <img src="img/images/testimonial_shape03.png" alt="" />
                                                         </div>
                                                         {/* <div className="testimonial__author-content">
                                                                 <h4 className="title">Uraney Jacke</h4>

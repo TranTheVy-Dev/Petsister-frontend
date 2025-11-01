@@ -152,7 +152,7 @@ console.log(responseMessage);
                         <div className="icon">
                           <i className="flaticon-phone"></i>
                         </div>
-                        <Link href={"tel:0123456789"}>+123 8989 444</Link>
+                        <Link href={"tel:0327255930"}>+84327255930</Link>
                       </li>
                       <li>
                         <div className="icon">
@@ -165,7 +165,7 @@ console.log(responseMessage);
                           <i className="flaticon-mail"></i>
                         </div>
                         <Link href={"mailto:info@gmail.com"}>
-                        petsisters.80833@gmail.com
+                        vydev050204@gmail.com
                         </Link>
                       </li>
                       <li>

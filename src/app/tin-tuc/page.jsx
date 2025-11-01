@@ -137,7 +137,7 @@ const Blog = () => {
                     </div>
                   ))}
                 </div>
-                <nav className="pagination__wrap mt-50">
+                {/* <nav className="pagination__wrap mt-50">
                   <ul className="list-wrap">
                     <li className="link-arrow">
                       <Link href="#">
@@ -170,7 +170,7 @@ const Blog = () => {
                       </Link>
                     </li>
                   </ul>
-                </nav>
+                </nav> */}
               </div>
               <div className="col-xl-3 col-lg-4">
                 <aside className="blog-sidebar">

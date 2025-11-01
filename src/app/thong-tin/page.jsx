@@ -136,8 +136,8 @@ export default function about() {
                   và chuyên nghiệp, chúng tôi mong muốn trở thành điểm đến hàng đầu trong khu vực, nơi bạn có thể
                    tìm thấy mọi thứ cần thiết để chăm sóc sức khỏe và hạnh phúc cho thú cưng của mình.
                   </p>
-                  <Link href={"contact.html"} className="btn">
-                    Tìm hiểu thêm{" "}
+                  <Link href={"/lien-he"} className="btn">
+                    Liên hệ với chúng tôi{" "}
                     <img
                       src="/img/icon/right_arrow.svg"
                       alt=""
@@ -646,17 +646,6 @@ export default function about() {
           </div>
         </div>
       </div>
-    </div>
-    <div className="team__bottom-content">
-      <p>Đội ngũ bác sĩ chuyên gia quý giá của chúng tôi</p>
-      <Link href={"team.html"} className="btn">
-        Xem tất cả đội ngũ{" "}
-        <img
-          src="/img/icon/right_arrow.svg"
-          alt=""
-          className="injectable"
-        />
-      </Link>
     </div>
   </div>
   <div className="team__shape-two">
