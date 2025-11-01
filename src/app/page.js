@@ -95,8 +95,9 @@ export default function Home() {
                                         <div className="customer__review">
                                             <div className="customer__review-img">
                                                 <ul className="list-wrap">
-                                                    <li><img src="img/images/author_01.png" alt="" /></li>
-                                                    <li><img src="img/images/author_02.png" alt="" /></li>
+                                                <li><img src="img/images/author_01.png" alt="" width="584" height="574" /></li>
+                                                <li><img src="img/images/author_02.png" alt="" width="584" height="574" /></li>
+
                                                     {/* <li><img src="img/images/author_03.png" alt=""/></li>
                                                     <li><img src="img/images/author_04.png" alt=""/></li> */}
                                                 </ul>
@@ -108,8 +109,8 @@ export default function Home() {
                                                     <i className="fas fa-star"></i>
                                                     <i className="fas fa-star"></i>
                                                     <i className="fas fa-star"></i>
-                                                </div>
-                                                <span>4.7 (1,567 lượt đánh giá)</span>
+                                                </div>  
+                                                <span>4.8 (25 lượt đánh giá)</span>
                                             </div>
                                         </div>
                                     </div>
@@ -436,7 +437,7 @@ export default function Home() {
                                     </div>
                                     <div className="review__box-content">
                                         <img src="img/icon/star.svg" alt="" className="injectable" />
-                                        <h2 className="title">1500+</h2>
+                                        <h2 className="title">20+</h2>
                                         <span>Reviews</span>
                                     </div>
                                 </div>
