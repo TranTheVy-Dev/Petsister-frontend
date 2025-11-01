@@ -95,8 +95,8 @@ export default function Home() {
                                         <div className="customer__review">
                                             <div className="customer__review-img">
                                                 <ul className="list-wrap">
-                                                <li><img src="img/images/author_01.png" alt="" width="584" height="574" /></li>
-                                                <li><img src="img/images/author_02.png" alt="" width="584" height="574" /></li>
+                                                <li><img src="img/images/author_01.png" alt="" width="150" height="60" /></li>
+                                                <li><img src="img/images/author_02.png" alt="" width="150" height="50" /></li>
 
                                                     {/* <li><img src="img/images/author_03.png" alt=""/></li>
                                                     <li><img src="img/images/author_04.png" alt=""/></li> */}
